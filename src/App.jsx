@@ -1551,6 +1551,46 @@ export default function AIEngineeringDemo() {
         </div>
       </div>
 
+      {/* VG Feature Options Overview */}
+      <div className="bg-white border-b">
+        <div className="max-w-5xl mx-auto px-6 py-5">
+          <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">VG Feature Options — pick one</h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+            {[
+              { name: "Semantic Search", icon: "🔍", tech: ["Embeddings", "Vector DB"], desc: "Search by meaning, not keywords" },
+              { name: "Recommendations", icon: "🎯", tech: ["Embeddings", "Vector DB"], desc: "\"Items similar to this one\"" },
+              { name: "Sentiment Analysis", icon: "💬", tech: ["LLM API"], desc: "Detect and visualize text sentiment" },
+              { name: "Summarization", icon: "📝", tech: ["LLM API"], desc: "LLM-powered text summaries" },
+              { name: "Clustering", icon: "🗂", tech: ["Embeddings", "Clustering"], desc: "Auto-group similar items" },
+              { name: "RAG", icon: "🤖", tech: ["Embeddings", "Vector DB", "LLM API"], desc: "Q&A grounded in your dataset" },
+            ].map(opt => (
+              <div key={opt.name} className="border rounded-lg p-3 hover:border-indigo-300 hover:bg-indigo-50/50 transition-colors">
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-lg">{opt.icon}</span>
+                  <span className="font-medium text-sm text-gray-800">{opt.name}</span>
+                </div>
+                <p className="text-xs text-gray-500 mb-2">{opt.desc}</p>
+                <div className="flex flex-wrap gap-1">
+                  {opt.tech.map(t => (
+                    <span key={t} className={`text-[10px] px-1.5 py-0.5 rounded-full font-medium ${
+                      t === "Embeddings" ? "bg-purple-100 text-purple-700" :
+                      t === "Vector DB" ? "bg-blue-100 text-blue-700" :
+                      t === "LLM API" ? "bg-amber-100 text-amber-700" :
+                      "bg-green-100 text-green-700"
+                    }`}>{t}</span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="flex gap-4 mt-3 text-[10px] text-gray-400">
+            <span><span className="inline-block w-2 h-2 rounded-full bg-purple-200 mr-1" />Needs embeddings</span>
+            <span><span className="inline-block w-2 h-2 rounded-full bg-blue-200 mr-1" />Needs vector storage</span>
+            <span><span className="inline-block w-2 h-2 rounded-full bg-amber-200 mr-1" />Needs LLM API calls</span>
+          </div>
+        </div>
+      </div>
+
       {/* Tab bar */}
       <div className="bg-white border-b sticky top-0 z-10">
         <div className="max-w-5xl mx-auto flex overflow-x-auto">
